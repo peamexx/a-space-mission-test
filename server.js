@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
+const port = 3000;
 
 app.get('/', function(req, res) {
     res.send('안녕하세요')
 });
 
-app.listen(3000, function() {
+app.listen(port, function() {
     console.log('listening on...')
 });
