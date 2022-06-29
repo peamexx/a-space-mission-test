@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const user = require('./src/schema/user.js');
+const user = require('./src/schema/users.js');
 
 app.use(express.static('src'));
 app.use(bodyParser.urlencoded({extended: true}));
