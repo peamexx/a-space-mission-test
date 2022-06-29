@@ -1,20 +1,28 @@
 ASM.deck.index = function() {
-    console.log('%c'+'----------------index onload', 'color:#00bfa5');
-
     const toLoginBtn = document.querySelector('.toLoginBtn');
     const toRegisterBtn = document.querySelector('.toRegisterBtn');
-    const toIndexBtn = document.querySelector('.toIndexBtn');
+    const toIndexBtns = document.querySelectorAll('.toIndexBtn');
 
     toLoginBtn.addEventListener('click', function(event) {
         event.target.parentElement.classList.add('hide');
         document.querySelector('.login').classList.remove('hide');
     });
 
-    toIndexBtn.addEventListener('click', function(event) {
+    toRegisterBtn.addEventListener('click', function(event) {
         event.target.parentElement.classList.add('hide');
-        document.querySelector('.index').classList.remove('hide');
-        document.querySelectorAll('.login input').forEach(function(el) {
-            el.value = '';
+        document.querySelector('.register').classList.remove('hide');
+    });
+
+    toIndexBtns.forEach(function(el) {
+        el.addEventListener('click', function(event) {
+            event.target.parentElement.classList.add('hide');
+            document.querySelector('.index').classList.remove('hide');
+            document.querySelectorAll('input').forEach(function(el) { //hhj나중에수정
+                el.value = '';
+            });
+            document.querySelectorAll('.warning').forEach(function(el) { //hhj나중에수정
+                el.textContent = '';
+            });
         });
     });
 };

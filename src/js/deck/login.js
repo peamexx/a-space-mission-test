@@ -1,6 +1,4 @@
 ASM.deck.login = function() {
-    console.log('%c'+'----------------login onload', 'color:#00bfa5');
-
     const btn = document.querySelector('#loginBtn');
     const id = document.querySelector('#id');
     const password = document.querySelector('#password');
@@ -14,7 +12,7 @@ ASM.deck.login = function() {
 
         if(returnv) {
             let data = {
-                'userName': id.value,
+                'id': id.value,
                 'password': password.value,
             };
 
@@ -32,7 +30,9 @@ ASM.deck.login = function() {
                 } else {
                     warning.textContent = '일치하는 정보가 없습니다. 다시 입력해주세요.'
                 }
-            })
+            }).catch(function(err) {
+                console.log(err)
+            });
         }
     });
 

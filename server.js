@@ -9,11 +9,13 @@ const port = process.env.PORT || 3000;
 // schema
 const user = require('./src/schema/users.js');
 
+// set use
 app.use(express.static('src'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, db) {
+// connect DB
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
     if(err) {
         console.log(err)
     } else {
@@ -21,6 +23,7 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
     }
 });
 
+// set
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/src/index.html');
 });
@@ -33,6 +36,21 @@ app.post('/login', async function(req, res) {
     }
 });
 
+app.post('/register', async function(req, res) {
+    let chkUser = await user.findOne({ id: req.body.id });
+
+    if(chkUser == null) {
+        let result = await new user(req.body).save();
+        
+        if(result) {
+            return res.json(result);
+        }
+    } else {
+        return res.json({'message': 'fail'})
+    }
+});
+
+// listen
 app.listen(port, function() {
     console.log('listening on...')
 });

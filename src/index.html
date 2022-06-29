@@ -18,9 +18,26 @@
         <div class="login hide">
             <input type="text" id="id">
             <input type="password" name="" id="password">
-            <button type="submit" id="loginBtn">로그인</button>
+            <button id="loginBtn">로그인</button>
             <button class="toIndexBtn">뒤로가기</button>
             <p class="warning"></p>
+        </div>
+        <div class="register hide">
+            <label for="regId">
+                <span>id</span>
+                <input type="text" id="regId">
+            </label>
+            <label for="regPassword">
+                <span>password</span>
+                <input type="password" name="" id="regPassword">
+            </label>
+            <label for="regPassword2">
+                <span>password check</span>
+                <input type="password" name="" id="regPassword2">
+            </label>
+            <p class="warning"></p>
+            <button id="regBtn">가즈앙</button>
+            <button class="toIndexBtn">뒤로가기</button>
         </div>
     </main>
     <footer></footer>
@@ -28,5 +45,6 @@
     <script src="/js/main.js"></script>
     <script src="/js/deck/index.js"></script>
     <script src="/js/deck/login.js"></script>
+    <script src="/js/deck/register.js"></script>
 </body>
 </html>
