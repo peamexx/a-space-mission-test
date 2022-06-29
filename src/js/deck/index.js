@@ -13,6 +13,9 @@ ASM.deck.index = function() {
     toIndexBtn.addEventListener('click', function(event) {
         event.target.parentElement.classList.add('hide');
         document.querySelector('.index').classList.remove('hide');
+        document.querySelectorAll('.login input').forEach(function(el) {
+            el.value = '';
+        });
     });
 };
 

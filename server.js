@@ -1,12 +1,12 @@
 require('dotenv').config();
 
 const express = require('express');
-// import 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// schema
 const user = require('./src/schema/users.js');
 
 app.use(express.static('src'));
@@ -28,9 +28,9 @@ app.get('/', function(req, res) {
 app.post('/login', async function(req, res) {
     let result = await user.find(req.body);
 
-    if(result.length > 0) {
-        return res.json();
-    };
+    if(result) {
+        return res.json(result);
+    }
 });
 
 app.listen(port, function() {
