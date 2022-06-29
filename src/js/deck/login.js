@@ -2,7 +2,7 @@ ASM.deck.login = function() {
     console.log('%c'+'----------------login onload', 'color:#00bfa5');
 
     const btn = document.querySelector('#loginBtn');
-    const userName = document.querySelector('#userName');
+    const id = document.querySelector('#id');
     const password = document.querySelector('#password');
 
     btn.addEventListener('click', async function(event) {
@@ -11,7 +11,7 @@ ASM.deck.login = function() {
 
         if(returnv) {
             let data = {
-                'userName': userName.value,
+                'userName': id.value,
                 'password': password.value,
             };
 
@@ -22,23 +22,19 @@ ASM.deck.login = function() {
                 },
                 body: JSON.stringify(data),
             }).then(function(res) {
-                console.log('도착...')
-                let data = res;
-
-                if(data.length > 0) {
-                    console.log('잇네')
-                } else {
-                    alert('읍어')
-                }
-            })
+                console.log('성공')
+            });
         }
     });
 
     function _chkInfo() {
-        let isEmpty = userName.value.length < 1 || password.value.length < 1;
+        let isEmpty = id.value.length < 1 || password.value.length < 1;
+        let isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(id.value);
 
         if(isEmpty) {
             console.log('빈칸 만들지마라..')
+        } else if(isKorean) {
+            console.log('한글쓰지마라..')
         } else {return true};
     };
 };

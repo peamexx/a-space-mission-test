@@ -11,15 +11,21 @@
 <body>
     <header></header>
     <main>
-        <div class="login">
-            <input type="text" id="userName">
+        <div class="index">
+            <button class="toLoginBtn">로그인</button>
+            <button class="toRegisterBtn">계정 생성</button>
+        </div>
+        <div class="login hide">
+            <input type="text" id="id">
             <input type="password" name="" id="password">
-            <button type="submit" id="loginBtn">click</button>
+            <button type="submit" id="loginBtn">로그인</button>
+            <button class="toIndexBtn">뒤로가기</button>
         </div>
     </main>
     <footer></footer>
 
     <script src="/js/main.js"></script>
+    <script src="/js/deck/index.js"></script>
     <script src="/js/deck/login.js"></script>
 </body>
 </html>

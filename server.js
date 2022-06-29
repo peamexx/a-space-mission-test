@@ -1,13 +1,13 @@
 require('dotenv').config();
 
 const express = require('express');
+// import 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// let database = undefined;
-const User = require('./src/schema/user.js');
+const user = require('./src/schema/user.js');
 
 app.use(express.static('src'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -18,7 +18,6 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
         console.log(err)
     } else {
         console.log('mongoDB has connected...')
-        // database = db;
     }
 });
 
@@ -27,20 +26,11 @@ app.get('/', function(req, res) {
 });
 
 app.post('/login', async function(req, res) {
-    console.log(req.body);
+    let result = await user.find(req.body);
 
-    let result = await User.find({ userName: 'efwef'});
-    if(result) {
-        console.log('왓니...')
-        console.log(result);
+    if(result.length > 0) {
         return res.json();
-    }
-    // let result = await User(req.body).save();
-    // if(result) {
-    //     console.log('왓니...')
-    //     console.log(result);
-    //     return res;
-    // }    
+    };
 });
 
 app.listen(port, function() {
