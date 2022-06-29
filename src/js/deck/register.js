@@ -1,5 +1,5 @@
 ASM.deck.register = function() {
-    console.log('%c'+'----------------register onload', 'color:#00bfa5');
+    const asm = this;
 
     const regId = document.querySelector('#regId');
     const regPassword = document.querySelector('#regPassword');
@@ -31,7 +31,14 @@ ASM.deck.register = function() {
                 if(data.message == 'fail') {
                     warning.textContent = '이미 id가 존재합니다. 다른 id를 입력해주세요.'
                 } else {
-                    warning.textContent = '회원가입 성공.';
+                    warning.textContent = '회원가입 성공. 잠시후 메인으로 돌아갑니다.';
+
+                    asm.settings.timer = true;
+                    setTimeout(() => {
+                        if(asm.settings.timer) {
+                            window.location.href = '';
+                        };
+                    }, 2000);
                 }
             }).catch(function(err) {
                 console.log(err)
@@ -54,6 +61,4 @@ ASM.deck.register = function() {
     };
 };
 
-ASM.deck.register.call();
-
-console.log(window);
+ASM.deck.register.call(ASM);

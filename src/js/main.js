@@ -9,4 +9,7 @@ var ASM = ASM || {};
 
     ASM.deck = {};
     ASM.version = '0.0.1';
+    ASM.settings = {
+        timer: false
+    };
 })();

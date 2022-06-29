@@ -48,6 +48,4 @@ ASM.deck.login = function() {
     };
 };
 
-ASM.deck.login.call();
-
-console.log(window);
+ASM.deck.login.call(ASM);

@@ -1,4 +1,6 @@
 ASM.deck.index = function() {
+    const asm = this;
+    
     const toLoginBtn = document.querySelector('.toLoginBtn');
     const toRegisterBtn = document.querySelector('.toRegisterBtn');
     const toIndexBtns = document.querySelectorAll('.toIndexBtn');
@@ -15,6 +17,8 @@ ASM.deck.index = function() {
 
     toIndexBtns.forEach(function(el) {
         el.addEventListener('click', function(event) {
+            asm.settings.timer = false;
+
             event.target.parentElement.classList.add('hide');
             document.querySelector('.index').classList.remove('hide');
             document.querySelectorAll('input').forEach(function(el) { //hhj나중에수정
@@ -27,4 +31,4 @@ ASM.deck.index = function() {
     });
 };
 
-ASM.deck.index.call();
+ASM.deck.index.call(ASM);
