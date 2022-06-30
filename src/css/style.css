@@ -62,4 +62,71 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#chapter {
+  width: 100%;
+  height: 100%;
+}
+#chapter .top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #333;
+}
+#chapter .top ul {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#chapter .top ul li#chSaveBtn {
+  width: 40px;
+  height: 100%;
+  background-image: url("../images/icon/save.png");
+  background-size: 30px 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#chapter .top ul li#gameCloseBtn {
+  width: 40px;
+  height: 100%;
+  background-image: url("../images/icon/close.png");
+  background-size: 30px 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#chapter .mid {
+  position: relative;
+  top: 40px;
+  width: 100%;
+  height: calc(100% - 40px - 80px);
+}
+#chapter .mid canvas {
+  width: 100%;
+  height: 100%;
+}
+#chapter .bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #333;
+}
+#chapter .bottom ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#chapter .bottom ul li {
+  width: 33%;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
