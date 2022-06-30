@@ -39,7 +39,19 @@ p {
 }
 
 .hide {
-    display: none;
+    display: none !important;
+}
+
+.fadeout {
+    transition: opacity 1s !important;
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.fadein {
+    transition: opacity 1s !important;
+    opacity: 1 !important;
+    pointer-events: all;
 }
 
 .bold {
@@ -115,6 +127,20 @@ main {
         canvas {
             width: 100%;
             height: 100%;
+        }
+        #event-popup {
+            display: table;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            // transition: all 0.5s ease;
+            .text-box {
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+            }
         }
     }
     .bottom {

@@ -4,6 +4,7 @@ ASM.deck.index = function() {
     const toLoginBtn = document.querySelector('.toLoginBtn');
     const toRegisterBtn = document.querySelector('.toRegisterBtn');
     const toIndexBtns = document.querySelectorAll('.toIndexBtn');
+    const eventPopupBtn = document.querySelector('#event-popup button');
 
     toLoginBtn.addEventListener('click', function(event) {
         event.target.parentElement.classList.add('hide');
@@ -28,6 +29,10 @@ ASM.deck.index = function() {
                 el.textContent = '';
             });
         });
+    });
+
+    eventPopupBtn.addEventListener('click', function(event) {
+        document.querySelector('#event-popup').classList.add('fadeout');
     });
 };
 
