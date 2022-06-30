@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 
 // schema
 const user = require('./src/schema/users.js');
+const line = require('./src/schema/lines.js');
 
 // set use
 app.use(express.static('src'));
@@ -57,6 +58,17 @@ app.post('/register', async function(req, res) {
             res.status(200).json({ msg: 'register success', data: req.body.id });
         }
     }
+});
+
+app.post('/chapter', async function(req, res) {
+    let chapterData = await line.findOne(req.body); //hhj애초에 다받아오는거루 해야하나? 
+
+    if(chapterData == null) {
+        res.status(500).json({ msg: 'no data exists', data: null });
+    } else {
+        console.log(chapterData.chapter)
+        res.status(200).send({ msg: 'line data success', data: chapterData }); //hhj특정한것만 받아올수없나 체크
+    };
 });
 
 // listen
