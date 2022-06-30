@@ -24,14 +24,14 @@ ASM.deck.login = function() {
                 body: JSON.stringify(data),
             }).then(function(res) {
                 return res.json();
-            }).then(function(data) {
-                if(data.length > 0) {
-                    warning.textContent = '로그인 성공';
+            }).then(function(result) {
+                if(result.data == null) {
+                    warning.textContent = 'id나 password를 다시 확인해주세요.'
                 } else {
-                    warning.textContent = '일치하는 정보가 없습니다. 다시 입력해주세요.'
+                    warning.textContent = '로그인 성공';
                 }
             }).catch(function(err) {
-                console.log(err)
+                console.log(err);
             });
         }
     });

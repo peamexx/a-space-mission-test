@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -23,30 +24,38 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
     }
 });
 
-// set
+// set router
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/src/index.html');
 });
 
 app.post('/login', async function(req, res) {
-    let result = await user.find(req.body);
+    let foundUser = await user.findOne({ id: req.body.id });
 
-    if(result) {
-        return res.json(result);
+    if(foundUser == null) {
+        res.status(500).json({ msg: 'no user exists', data: null });
+    } else {
+        let comparedUser = await bcrypt.compare(req.body.password, foundUser.password);
+
+        if(!comparedUser) {
+            res.status(500).json({ msg: 'not allowed', data: null })
+        } else {
+            res.status(200).json({ msg: 'login success', data: req.body.id });
+        };
     }
 });
 
 app.post('/register', async function(req, res) {
-    let chkUser = await user.findOne({ id: req.body.id });
+    let chkSameUser = await user.findOne({ id: req.body.id });
 
-    if(chkUser == null) {
+    if(chkSameUser != null) {
+        res.status(409).json({ msg: 'user exists already', data: null });
+    } else {
         let result = await new user(req.body).save();
         
         if(result) {
-            return res.json(result);
+            res.status(200).json({ msg: 'register success', data: req.body.id });
         }
-    } else {
-        return res.json({'message': 'fail'})
     }
 });
 

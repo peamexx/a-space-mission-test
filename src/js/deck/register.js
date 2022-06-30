@@ -27,21 +27,16 @@ ASM.deck.register = function() {
                 body: JSON.stringify(data),
             }).then(function(res) {
                 return res.json();
-            }).then(function(data) {
-                if(data.message == 'fail') {
+            }).then(function(result) {
+                if(result.data == null) {
                     warning.textContent = '이미 id가 존재합니다. 다른 id를 입력해주세요.'
                 } else {
                     warning.textContent = '회원가입 성공. 잠시후 메인으로 돌아갑니다.';
 
-                    asm.settings.timer = true;
-                    setTimeout(() => {
-                        if(asm.settings.timer) {
-                            window.location.href = '';
-                        };
-                    }, 2000);
+                    _rediectMain();
                 }
             }).catch(function(err) {
-                console.log(err)
+                console.log(err);
             });
         }
     });
@@ -58,6 +53,15 @@ ASM.deck.register = function() {
         } else if(isNotEqual) {
             warning.textContent = '비밀번호가 맞지 않습니다. 다시 입력해주세요.'
         } else {return true};
+    };
+
+    function _rediectMain() {
+        asm.settings.timer = true;
+        setTimeout(() => {
+            if(asm.settings.timer) {
+                window.location.href = '';
+            };
+        }, 2000);
     };
 };
 
