@@ -61,7 +61,7 @@ ASM.deck.register = function() {
             if(asm.settings.timer) {
                 window.location.href = '';
             };
-        }, 2000);
+        }, 1500);
     };
 };
 
