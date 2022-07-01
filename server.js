@@ -66,8 +66,10 @@ app.post('/chapter', async function(req, res) {
     if(chapterData == null) {
         res.status(500).json({ msg: 'no data exists', data: null });
     } else {
-        console.log(chapterData.chapter)
-        res.status(200).send({ msg: 'line data success', data: chapterData }); //hhj특정한것만 받아올수없나 체크
+        res.status(200).send({ msg: 'line data success', data: {
+            'chapter': chapterData.chapter,
+            'text': chapterData.text
+        } });
     };
 });
 

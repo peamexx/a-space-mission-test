@@ -6,6 +6,9 @@ const line = new Schema({
         type: Number,
         required: true,
         trim: true,
+    },
+    text: {
+        type: Array,
     }
 });
 
