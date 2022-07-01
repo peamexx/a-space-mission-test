@@ -3,7 +3,8 @@ ASM.deck.chapter = function() {
     
     const chapter = document.querySelector('#chapter');
     const time = chapter.querySelector('.top .time');
-    const line = chapter.querySelector('#text-box p');
+    const textbox = chapter.querySelector('#text-box');
+    const line = textbox.querySelector('p');
 
     let data = {
         'chapter': 1
@@ -24,6 +25,10 @@ ASM.deck.chapter = function() {
         console.log(err);
     });
 
+    textbox.addEventListener('click', function(event) {
+        _setNextLine();
+    });
+
 
     // function _setTime() {
     //     return setInterval(function() {
@@ -35,7 +40,22 @@ ASM.deck.chapter = function() {
     function _setLines() {
         if(asm.settings.lines.length > 0) {
             line.textContent = asm.settings.lines[0].text[0];
+            asm.settings.currentChapter = 1;
+            asm.settings.currentLineIndx = 0;
         }
+    };
+
+    function _setNextLine() {
+        let currChapterIndx = asm.settings.currentChapter - 1;
+        let nextLineIndx = asm.settings.currentLineIndx + 1;
+
+        if(asm.settings.lines[currChapterIndx].text[nextLineIndx] == undefined) {
+            nextLineIndx = nextLineIndx - 1;
+        };
+        
+        line.textContent = asm.settings.lines[currChapterIndx].text[nextLineIndx];
+
+        asm.settings.currentLineIndx = nextLineIndx;
     };
 
     return {

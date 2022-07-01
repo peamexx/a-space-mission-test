@@ -16,5 +16,7 @@ var ASM = ASM || {};
         y: undefined,
         lines: [],
         promises: [],
+        currentChapter: undefined,
+        currentLineIndx: undefined,
     };
 })();
