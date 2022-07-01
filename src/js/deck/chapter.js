@@ -3,11 +3,13 @@ ASM.deck.chapter = function() {
     
     const chapter = document.querySelector('#chapter');
     const time = chapter.querySelector('.top .time');
+    const line = chapter.querySelector('#text-box p');
 
     let data = {
         'chapter': 1
-    }
-    fetch('/chapter', {
+    };
+    
+    let promise = fetch('/chapter', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -17,7 +19,7 @@ ASM.deck.chapter = function() {
         return res.json();
     }).then(function(result) {
         asm.settings.lines = [].concat(result.data);
-        console.dir(asm);
+        asm.settings.promises.push(promise);
     }).catch(function(err) {
         console.log(err);
     });
@@ -29,6 +31,16 @@ ASM.deck.chapter = function() {
     //         time.textContent = `${date.getFullYear()}/${(date.getMonth() + 1)}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
     //     }, 60000)
     // };
+
+    function _setLines() {
+        if(asm.settings.lines.length > 0) {
+            line.textContent = asm.settings.lines[0].text[0];
+        }
+    };
+
+    return {
+        setLines: _setLines
+    }
 };
 
-ASM.deck.chapter.call(ASM);
+ASM.controller = ASM.deck.chapter.call(ASM);
