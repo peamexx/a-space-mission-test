@@ -1,4 +1,6 @@
 ASM.deck.login = function() {
+    const asm = this;
+    
     const btn = document.querySelector('#loginBtn');
     const id = document.querySelector('#id');
     const password = document.querySelector('#password');
@@ -29,7 +31,7 @@ ASM.deck.login = function() {
                     warning.textContent = 'id나 password를 다시 확인해주세요.'
                 } else {
                     warning.textContent = '로그인 성공';
-                }
+                };
             }).catch(function(err) {
                 console.log(err);
             });
