@@ -9,6 +9,7 @@ var ASM = ASM || {};
 
     ASM.deck = {};
     ASM.version = '0.0.1';
+    ASM.controller = {};
     ASM.settings = {
         timer: false,
         x: undefined,

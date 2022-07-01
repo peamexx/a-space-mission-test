@@ -43,4 +43,4 @@ ASM.deck.chapter = function() {
     }
 };
 
-ASM.controller = ASM.deck.chapter.call(ASM);
+ASM.controller.chapterController = ASM.deck.chapter.call(ASM);

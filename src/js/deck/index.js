@@ -6,6 +6,17 @@ ASM.deck.index = function() {
     const toIndexBtns = document.querySelectorAll('.toIndexBtn');
     const eventPopupBtn = document.querySelector('#event-popup button');
 
+    const _loading = {
+        show: function() {
+            document.querySelector('.loading').classList.remove('fadeout');
+            document.querySelector('.loading').classList.add('fadein');
+        },
+        hide: function() {
+            document.querySelector('.loading').classList.remove('fadein');
+            document.querySelector('.loading').classList.add('fadeout');
+        }
+    };
+
     toLoginBtn.addEventListener('click', function(event) {
         event.target.parentElement.classList.add('hide');
         document.querySelector('.login').classList.remove('hide');
@@ -34,6 +45,10 @@ ASM.deck.index = function() {
     eventPopupBtn.addEventListener('click', function(event) {
         document.querySelector('#event-popup').classList.add('fadeout');
     });
+
+    return {
+        loading: _loading,
+    }
 };
 
-ASM.deck.index.call(ASM);
+ASM.controller.domController = ASM.deck.index.call(ASM);
