@@ -150,6 +150,22 @@ main {
   overflow-y: auto;
   z-index: 900;
 }
+#chapter .mid #text-box p {
+  position: relative;
+}
+#chapter .mid #text-box p::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background-image: url("../images/icon/end-btn.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 #chapter .bottom {
   position: absolute;
   left: 0;
