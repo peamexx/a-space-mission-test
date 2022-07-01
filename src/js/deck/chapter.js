@@ -9,6 +9,12 @@ ASM.deck.chapter = function() {
     let data = {
         'chapter': 1
     };
+    let soundPress = new Howl({ 
+        src: ['/audio/press.mp3'],
+        sprite: {
+            fire: [200, 1000]
+        }
+    });
     
     let promise = fetch('/chapter', {
         method: 'POST',
@@ -26,6 +32,7 @@ ASM.deck.chapter = function() {
     });
 
     textbox.addEventListener('click', function(event) {
+        soundPress.play('fire');
         _setNextLine();
     });
 
