@@ -10,6 +10,10 @@ var ASM = ASM || {};
     ASM.deck = {};
     ASM.version = '0.0.1';
     ASM.settings = {
-        timer: false
+        timer: false,
+        x: undefined,
+        y: undefined,
+        lines: [],
+        promises: [],
     };
 })();
